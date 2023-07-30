@@ -14,7 +14,7 @@ class ProductsFixtures extends Fixture
     {
         $faker = Faker\Factory::create('fr_FR');
 
-        for($prd = 1; $prd <= 10; $prd++) {
+        for($prd = 1; $prd <= 30; $prd++) {
             $product = new Products();
             $product -> setName($faker->text(15));
             $product -> setDescription($faker->text(15));
