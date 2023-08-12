@@ -42,6 +42,7 @@ class Products
     public function __construct()
     {
         $this->images = new ArrayCollection();
+        $this->created_at = new \DateTimeImmutable();
     }
 
     public function getId(): ?int

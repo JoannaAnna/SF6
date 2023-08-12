@@ -1,30 +1,26 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="{{ path('main') }}">Notre boutique</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand" href="{{ path('main') }}">
+        <img src="{{ asset('assets/uploads/shop.jpg') }}" width="120"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" 
+        data-target="#navbarSupportedContent"aria-controls="navbarSupportedContent" 
+        aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
         <li class="nav-item active">
-            <a class="nav-link" href="{{ path('main') }}">Accueil<span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="{{ path('main') }}">Accueil
+                <span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Dropdown
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
-        </li>
+        {% if is_granted('ROLE_PRODUCT_ADMIN') %}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('app_admin_products_add') }}">
+                    Ajouter un produit</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Modifier un produit</a>
+            </li>
+        {% endif %}
         </ul>
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             {% if app.user %}
@@ -32,14 +28,17 @@
                     <a class="nav-link" href="#">Mon compte</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path('app_logout') }}">Me déconnecter</a>
+                    <a class="nav-link" href="{{ path('app_logout') }}">
+                        Me déconnecter</a>
                 </li>
             {% else %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path('app_register') }}">M'inscrire</a>
+                    <a class="nav-link" href="{{ path('app_register') }}">
+                        M'inscrire</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path('app_login') }}">Me connecter</a>
+                    <a class="nav-link" href="{{ path('app_login') }}">
+                        Me connecter</a>
                 </li>
             {% endif %}
         </ul>
